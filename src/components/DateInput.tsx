@@ -12,14 +12,23 @@ const DateInput = ({
   const [error, setError] = useState<boolean>(false);
   const [digits, setDigits] = useState<(string | null)[]>(Array(8).fill(null));
   const [focusedIndex, setFocusedIndex] = useState<number | null>(-1);
+  const [americanFormat, setDateFormat] = useState<boolean>(false);
   const refs = Array.from({ length: 8 }, () => useRef<HTMLInputElement>(null));
-  const placeholders = ["D", "D", "M", "M", "Y", "Y", "Y", "Y"];
 
   useEffect(() => {
-    const [d1, d2, m1, m2, y1, y2, y3, y4] = digits;
-    const day = parseInt(`${d1}${d2}`, 10);
-    const month = parseInt(`${m1}${m2}`, 10) - 1;
-    const year = parseInt(`${y1}${y2}${y3}${y4}`, 10);
+    setDateFormat(
+      (navigator.language || navigator.languages).includes("en-US"),
+    );
+  }, []);
+
+  useEffect(() => {
+    const day = americanFormat
+      ? parseInt(digits.slice(2, 4).join(""))
+      : parseInt(digits.slice(0, 2).join(""));
+    const month = americanFormat
+      ? parseInt(digits.slice(0, 2).join(""))
+      : parseInt(digits.slice(2, 4).join(""));
+    const year = parseInt(digits.slice(4, 8).join(""));
     const date = new Date(year, month, day);
 
     if (digits.every((d) => d !== null)) {
@@ -99,7 +108,12 @@ const DateInput = ({
             type="tel"
             inputMode="numeric"
             maxLength={1}
-            placeholder={placeholders[index]}
+            placeholder={
+              (americanFormat ? "MM/DD/YYYY" : "DD/MM/YYYY")
+                .split("/")
+                .join("")
+                .split("")[index]
+            }
             onFocus={() => setFocusedIndex(index)}
             onBlur={() => setFocusedIndex(null)}
             className={clsx(

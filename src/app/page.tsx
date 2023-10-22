@@ -22,7 +22,6 @@ export default function Home() {
     const birthday = localStorage.getItem("birthday");
     if (birthday) {
       const date = new Date(birthday);
-      console.log("ls", date);
       if (!isNaN(date.getTime())) {
         setBirthday(date);
         setView("time");
@@ -39,7 +38,6 @@ export default function Home() {
     const intervalId = setInterval(() => {
       if (birthday) {
         setPassedTime(getPassedTime(birthday));
-        console.log(getPassedTime(birthday));
       }
     }, 1);
 
@@ -105,11 +103,15 @@ export default function Home() {
               <motion.button
                 layout
                 ref={continueButtonRef}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
                 onClick={() => {
                   localStorage.setItem("birthday", birthday.toISOString());
                   setView("time");
                 }}
-                className="w-full rounded border border-black p-3 text-black transition-all duration-150 hover:shadow-md focus:shadow-md focus:outline-none active:scale-[0.98]"
+                className="w-full rounded border border-black p-3 text-black transition-all duration-150 hover:bg-black hover:text-white focus:bg-black focus:text-white focus:outline-none"
               >
                 Continue
               </motion.button>

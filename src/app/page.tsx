@@ -79,7 +79,9 @@ export default function Home() {
                 {String(passedTime).split(".")[0]}
               </span>
               <span>.</span>
-              <span>{String(passedTime).split(".")[1].padEnd(10, "0")}</span>
+              <span>
+                {(String(passedTime).split(".")[1] || "").padEnd(10, "0")}
+              </span>
             </div>
           </motion.div>
         )}

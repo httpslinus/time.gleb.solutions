@@ -8,6 +8,25 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Time is endless... until it isn't",
   description: "Time is endless... until it isn't",
+  creator: "https://linus.systems",
+  publisher: "https://gleb.solutions",
+  metadataBase: new URL("https://time.gleb.solutions"),
+  openGraph: {
+    type: "website",
+    url: "https://time.gleb.solutions",
+    title: "Time is endless... until it isn't",
+    images: [
+      {
+        url: "https://time.gleb.solutions/og.png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Time is endless... until it isn't",
+    creator: "@httpslinus",
+    images: "https://time.gleb.solutions/og.png",
+  },
 };
 
 export default function RootLayout({
@@ -20,7 +39,7 @@ export default function RootLayout({
       <body
         className={clsx(
           inter.className,
-          "h-full bg-white text-black dark:bg-neutral-950 dark:text-white",
+          "h-full bg-white text-black dark:bg-neutral-900 dark:text-white",
         )}
       >
         {children}

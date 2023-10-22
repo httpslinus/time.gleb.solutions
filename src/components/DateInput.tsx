@@ -117,11 +117,13 @@ const DateInput = ({
             onFocus={() => setFocusedIndex(index)}
             onBlur={() => setFocusedIndex(null)}
             className={clsx(
-              "h-10 w-8 rounded border bg-white text-center text-base text-black caret-transparent outline-none transition-all duration-150 focus:outline-none",
+              "bg-transparent text-black placeholder-neutral-300",
+              "dark:text-white dark:placeholder-neutral-600",
+              "h-10 w-8 rounded border text-center text-base caret-transparent outline-none transition-all duration-150 focus:outline-none",
               error && digits.every((d) => d !== null) && "border-red-500",
               focusedIndex === index || digits[index] !== null
-                ? "border-black"
-                : "border-gray-300",
+                ? "border-black dark:border-white"
+                : "border-neutral-300 dark:border-neutral-600",
             )}
             defaultValue={digits[index] ?? ""}
             onKeyDown={(e) => handleKeyDown(e, index)}

@@ -1,6 +1,7 @@
 "use client";
 
 import DateInput from "@/components/DateInput";
+import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -111,7 +112,11 @@ export default function Home() {
                   localStorage.setItem("birthday", birthday.toISOString());
                   setView("time");
                 }}
-                className="w-full rounded border border-black p-3 text-black transition-all duration-150 hover:bg-black hover:text-white focus:bg-black focus:text-white focus:outline-none"
+                className={clsx(
+                  "w-full rounded border p-3 transition-all duration-150 focus:outline-none",
+                  "border-black bg-transparent text-black hover:bg-black hover:text-white focus:bg-black focus:text-white",
+                  "dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:focus:border-white dark:focus:bg-white dark:focus:text-black",
+                )}
               >
                 Continue
               </motion.button>

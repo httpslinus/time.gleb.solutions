@@ -7,7 +7,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Time is endless... until it isn't",
-  description: "Time is endless... until it isn't",
   creator: "https://linus.systems",
   publisher: "https://gleb.solutions",
   metadataBase: new URL("https://time.gleb.solutions"),

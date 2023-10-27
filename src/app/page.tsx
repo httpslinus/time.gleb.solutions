@@ -74,8 +74,8 @@ export default function Home() {
               localStorage.removeItem("birthday");
             }}
           >
-            <div className="select-none text-2xl [font-variant-numeric:tabular-nums]">
-              <span className="text-4xl">
+            <div className="select-none text-2xl lg:text-7xl [font-variant-numeric:tabular-nums]">
+              <span className="text-4xl lg:text-9xl">
                 {String(passedTime).split(".")[0]}
               </span>
               <span>.</span>

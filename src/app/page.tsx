@@ -97,7 +97,7 @@ export default function Home() {
             className="flex flex-col items-start justify-start gap-3"
           >
             <div className="flex w-full flex-row items-center justify-between">
-              <h3 className="leading-4">What&apos;s your birthday?</h3>
+              <h3 className="leading-4">enter your birthday</h3>
               <Link href="https://gleb.solutions" target="_blank">
                 <Image
                   src="/dot.png"

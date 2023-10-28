@@ -3,6 +3,8 @@
 import DateInput from "@/components/DateInput";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
@@ -74,7 +76,7 @@ export default function Home() {
               localStorage.removeItem("birthday");
             }}
           >
-            <div className="select-none text-2xl lg:text-7xl [font-variant-numeric:tabular-nums]">
+            <div className="select-none text-2xl [font-variant-numeric:tabular-nums] lg:text-7xl">
               <span className="text-4xl lg:text-9xl">
                 {String(passedTime).split(".")[0]}
               </span>
@@ -94,35 +96,45 @@ export default function Home() {
             transition={{ duration: 0.15 }}
             className="flex flex-col items-start justify-start gap-3"
           >
-            <motion.h3 layout className="leading-4">
-              Your Birthday
-            </motion.h3>
+            <div className="flex w-full flex-row items-center justify-between">
+              <h3 className="leading-4">What&apos;s your birthday?</h3>
+              <Link href="https://gleb.solutions" target="_blank">
+                <Image
+                  src="/dot.png"
+                  alt=".solutions logo"
+                  width={48}
+                  height={48}
+                  className="h-4 w-4 object-contain dark:invert"
+                />
+              </Link>
+            </div>
 
-            <motion.div layout>
+            <div>
               <DateInput setDate={setBirthday} />
-            </motion.div>
+            </div>
 
-            {birthday !== null && (
-              <motion.button
-                layout
-                ref={continueButtonRef}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 0.15 }}
-                onClick={() => {
-                  localStorage.setItem("birthday", birthday.toISOString());
-                  setView("time");
-                }}
-                className={clsx(
-                  "w-full rounded border p-3 transition-all duration-150 focus:outline-none",
+            <button
+              ref={continueButtonRef}
+              disabled={birthday === null}
+              onClick={() => {
+                if (birthday === null) return;
+                localStorage.setItem("birthday", birthday.toISOString());
+                setView("time");
+              }}
+              className={clsx(
+                "w-full rounded border p-3 transition-all duration-150 focus:outline-none",
+                birthday != null &&
                   "border-black bg-transparent text-black hover:bg-black hover:text-white focus:bg-black focus:text-white",
+                birthday != null &&
                   "dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:focus:border-white dark:focus:bg-white dark:focus:text-black",
-                )}
-              >
-                Continue
-              </motion.button>
-            )}
+                birthday == null &&
+                  "border-neutral-300 text-neutral-300 hover:bg-transparent hover:text-neutral-300",
+                birthday == null &&
+                  "dark:border-neutral-600 dark:text-neutral-600 dark:hover:bg-transparent dark:hover:text-neutral-600",
+              )}
+            >
+              Continue
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

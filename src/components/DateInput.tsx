@@ -48,7 +48,6 @@ const DateInput = ({
       date < new Date()
     ) {
       setDate(date);
-      refs[refs.length - 1].current?.blur();
       setError(false);
     }
   }, [digits]);

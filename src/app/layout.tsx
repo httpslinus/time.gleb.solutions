@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   creator: "https://linus.systems",
   publisher: "https://gleb.solutions",
   metadataBase: new URL("https://time.gleb.solutions"),
+  icons: [
+    {
+      rel: "icon",
+      type: "image/png",
+      url: "/favicon.png",
+    },
+  ],
   openGraph: {
     type: "website",
     url: "https://time.gleb.solutions",

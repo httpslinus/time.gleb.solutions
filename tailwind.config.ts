@@ -14,9 +14,6 @@ const config: Config = {
         tertiary: "#eeeeee",
         background: "#ffffff",
       },
-      borderWidth: {
-        1: "1px",
-      },
     },
   },
   plugins: [],

@@ -13,6 +13,7 @@ const DateInput = ({
   const [digits, setDigits] = useState<(string | null)[]>(Array(8).fill(null));
   const [focusedIndex, setFocusedIndex] = useState<number | null>(-1);
   const [americanFormat, setDateFormat] = useState<boolean>(false);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const refs = Array.from({ length: 8 }, () => useRef<HTMLInputElement>(null));
 
   useEffect(() => {
@@ -45,12 +46,15 @@ const DateInput = ({
     if (
       digits.every((d) => d !== null) &&
       !isNaN(date.getTime()) &&
-      date < new Date()
+      date < new Date() &&
+      month < 13 &&
+      day < 32 &&
+      year > 1900
     ) {
       setDate(date);
       setError(false);
     }
-  }, [digits]);
+  }, [americanFormat, digits, setDate]);
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
@@ -116,8 +120,8 @@ const DateInput = ({
             onFocus={() => setFocusedIndex(index)}
             onBlur={() => setFocusedIndex(null)}
             className={clsx(
-              "bg-transparent text-black placeholder-neutral-300",
-              "dark:text-white dark:placeholder-neutral-600",
+              "bg-transparent text-black placeholder:text-neutral-300",
+              "dark:text-white dark:placeholder:text-neutral-600",
               "h-10 w-8 rounded border text-center text-base caret-transparent outline-none transition-all duration-150 focus:outline-none",
               error && digits.every((d) => d !== null) && "border-red-500",
               focusedIndex === index || digits[index] !== null

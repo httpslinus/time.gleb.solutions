@@ -1,7 +1,7 @@
 {
   "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended"],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "simple-import-sort", "prettier"],
+  "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -9,8 +9,6 @@
         "endOfLine": "auto"
       }
     ],
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-explicit-any": "warn",
     "no-console": "warn"

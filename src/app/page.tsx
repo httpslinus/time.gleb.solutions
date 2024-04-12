@@ -60,7 +60,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex h-full w-full items-center justify-center">
+    <main className="flex size-full items-center justify-center">
       <AnimatePresence mode="wait">
         {view === "time" && passedTime && (
           <motion.div
@@ -104,7 +104,7 @@ export default function Home() {
                   alt=".solutions logo"
                   width={48}
                   height={48}
-                  className="h-4 w-4 object-contain dark:invert"
+                  className="size-4 object-contain dark:invert"
                 />
               </Link>
             </div>

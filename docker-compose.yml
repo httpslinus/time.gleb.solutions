@@ -4,5 +4,5 @@ services:
     build: .
     container_name: time.gleb.solutions
     ports:
-      - "8001:3000"
+      - "${PORT}:3000"
     user: nextjs:nodejs

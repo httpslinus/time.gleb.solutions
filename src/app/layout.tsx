@@ -6,7 +6,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "time.gleb.solutions",
+  title: "Time",
   creator: "https://linus.systems",
   publisher: "https://gleb.solutions",
   metadataBase: new URL("https://time.gleb.solutions"),
